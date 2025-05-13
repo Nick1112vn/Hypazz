@@ -84,7 +84,11 @@
       loadPage('./pages/game');
       
     })
-    document.getElementById('name').value=localStorage.getItem("name")
+    socket.on('disconnect', (reason) => {
+      console.log('Socket disconnected:', reason);
+      loadPage('./');
+      //socket.removeAllListeners();
+    });
     socket.on('roomJoined', (room) => {
       localStorage.setItem("name",document.getElementById('name').value);
       document.getElementById('currentRoom').textContent = 'Room: ' + room;

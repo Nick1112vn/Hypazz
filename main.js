@@ -1,6 +1,6 @@
 window._scripts[document.currentScript.src] = {
     start: function() {
-     
+      document.getElementById('name').value=localStorage.getItem("name")
       fitTextToOwnHeight("#info > input ",0.6,{});
       fitTextToOwnHeight("#info button",0.6,{});
       fitTextToOwnHeight("#info h2",1,{});

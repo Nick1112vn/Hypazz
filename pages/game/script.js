@@ -40,7 +40,7 @@ function sendStatus(){
         
 if (player.status=="move"){
   //console.log(player.id,parseFloat(document.getElementById(player.id).style.left));
-    const v=200000;
+    const v=2000;
     let wt=0;
     await delay(200);
     if(!document.getElementById(player.id))return
@@ -146,11 +146,7 @@ document.getElementById(player.id).position=player.position
     socket.on('receiveMessage', ({ id, message }) => {
       console.log(111);
     });
-    socket.on('disconnect', (reason) => {
-      console.log('Socket disconnected:', reason);
-      loadPage('./');
-      //socket.removeAllListeners();
-    });
+    
     socket.on('roomClosed', () => {
       console.log("roomClosed")
       loadPage('./');
@@ -258,6 +254,7 @@ function normalizeVector(v) {
       fitTextToOwnHeight("#winnerPanel .scores  > .b > p",0.8,{left:20/100});
       fitTextToOwnHeight("#winnerPanel .scores  > .a > h1",0.8,{right:20/100});
       fitTextToOwnHeight("#winnerPanel .scores  > .b > h1",0.8,{left:20/100});
+      fitTextToOwnHeight("#winnerPanel button",0.8,{});
       fitTextToOwnHeight("#timeline h1",0.7,{})
       currentRound=0;
       socket.emit("setupStatus","1");
