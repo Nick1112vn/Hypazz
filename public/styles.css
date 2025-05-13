@@ -1,0 +1,96 @@
+#webBody .b .bg{
+    background-color: rgb(4, 29, 19);
+    background-image: url('./assets/bg.png');
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
+    background-size: 100%;
+    background-position: center center;
+}
+#webBody{
+    background-color: rgb(4, 29, 19);
+}
+#roomId,#name{
+    
+    
+   
+    width:100%;
+    height:20%;
+    text-align: center;
+    border:none;
+    padding:0;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+    margin-bottom: 5%;
+    transition: box-shadow 0.2s;
+}
+#roomId:focus,#name:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: rgb(0, 36, 67);
+  }
+#roomId{
+    
+    width:100%;
+}
+#roomjoin{
+    width:20%;
+    height:30%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#info{
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width:20%;
+    height:30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#info h2{
+height:33.2%;
+margin:0;
+margin-bottom: 5%;
+text-align: center;
+color: rgb(113, 155, 255);
+}
+#info > div{
+    display: flex;
+    height:20%;
+    
+    gap: 5%;
+}
+#info button,#roomjoin button{
+    height:100%;
+    width:50%;
+    border:none;
+    padding:0;
+    outline: none;
+    background-color: rgb(0, 128, 255);
+    cursor: pointer;
+    transition:  background-color 0.2s;
+    }
+    #roomjoin button{height:20%;width:100%; margin-bottom: 5%;}
+    #info h3{
+        height:10.4%;
+        margin:0;
+        margin-bottom: 5%;
+      position: absolute;
+     color: rgb(205, 231, 255);
+        
+    }
+    #info button:hover,#roomjoin button:hover{
+        background-color: rgb(160, 207, 255);
+    }

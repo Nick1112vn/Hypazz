@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body id="gameBody">
+    <div class='b'>
+        
+    <div >
+        <div id="winnerPanel">
+            <div class='scores'>
+                <div class="a">
+                    
+                    <h1>playerA</h1>
+                    <p>0</p>
+                </div>
+                <div class="b">
+                    <p>0</p>
+                    <h1>playerB</h1>
+                    
+                </div>
+            </div>
+            <button onclick="loadPage('./')">return home</button>
+        </div>
+        <div id='scores' class="scores">
+            <div class="a">
+                
+                <h1>playerA</h1>
+                <p>0</p>
+            </div>
+            <div class="b">
+                <p>0</p>
+                <h1>playerB</h1>
+                
+            </div>
+        </div>
+        <div id="timeline">
+            <div class="bar">
+                <div></div>
+            </div>
+            <h1>1/20</h1>
+        </div>
+        <div class="bg"></div>
+        <div id="ground">
+            
+            <div id="field">
+            <div id="cover"></div>    
+                <div id="goala"></div>
+            <div id="goalb"></div>
+            <div id="stick" style="position: absolute; height: 10%;  background: black; transform-origin: left; opacity:0"><div class="predPlr"></div></div>
+                <div id="statusSelect">
+                    <div>
+                    <p class="text">M</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text">P</p>
+                        </div>
+                        <div>
+                            <p class="text">S</p>
+                            </div>
+                            
+                        </div>
+            <div id="ball"></div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    
+    <script src="./pages/game/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
+
+</body>
+</html>

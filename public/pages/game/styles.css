@@ -1,0 +1,387 @@
+body, html {
+    overflow: hidden;
+   
+}
+body{
+    
+    position: absolute;
+   
+   padding: 0%;
+   margin: 0%;
+   left:50%;
+   top:50%;
+   transform: translate(-50%,-50%);
+   width:100%;
+   height:100%;
+   
+   background-repeat: no-repeat; /* Prevents the background from repeating */
+   background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
+   background-size: 100%;
+}
+body *{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+#gameBody{
+    background-color: rgb(4, 29, 19);
+    
+}
+body > .b > div .bg{
+    position: absolute;
+    left:0%;
+    top:0%;
+    
+    width:100%;
+    height:100%;
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+   background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
+   background-size: 100%;
+    background-image: url("../../assets/gameBg.png");
+    background-position: center center;
+}
+#ground{
+    
+    width:70%;
+    aspect-ratio: 103/53;
+    background-color:rgb(22, 56, 0);
+    
+    box-shadow: 0px 0px 10px rgba(0, 22, 43, 0.7);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    
+}
+#ground #field {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 97%;  /* 100% - 10% × 2 */
+    aspect-ratio: 2/1;
+    
+    background-image: url("../../assets/fieldImg.png");
+    background-size: cover;
+    
+    z-index: -1;
+  }
+  .player,.predPlr{
+    z-index: 2;
+    width:5%;
+    aspect-ratio: 1/1;
+    background-color:rgb(4, 255, 155);
+    
+    min-height: 0;
+    min-width: 0;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 100%;
+    transition: background-color 0.2s ,opacity 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.player::before,.predPlr::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;  /* 100% - 10% × 2 */
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    
+    background: rgb(24, 46, 34);
+    
+    z-index: -1;
+  }
+  .predPlr::before {
+    background: rgb(0, 0, 0);
+  }
+  .predPlr{
+    left:auto;
+right:0;
+height:100%;
+width:auto;
+transform: translate(50%,-50%);
+background: rgb(255, 255, 255);
+  }
+  .player:hover {
+    background-color: yellow;
+    font-size: 18px;
+  }
+body > .b > div {
+    width:200vh;
+    aspect-ratio: 2/0.9;
+    position: relative;
+}
+body > .b{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    
+    
+}
+#ball,.predictBall{
+    
+    width:5%;
+    aspect-ratio: 1/1;
+    background-color:rgb(255, 255, 255) !important;
+    
+    min-height: 0;
+    min-width: 0;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 100%;
+    z-index: 3;
+}
+#ball::before,.predictBall::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;  /* 100% - 10% × 2 */
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    
+    background: rgb(139, 139, 139);
+    
+    z-index: -1;
+  }
+  #statusSelect{
+    width:12%;
+    aspect-ratio: 78/25;
+    background-color: rgb(236, 255, 179);
+    position: absolute;
+    visibility: hidden;
+    flex-direction: row;
+    gap:2%;
+    display: flex;
+    z-index: 20;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+  }
+  #statusSelect div p{
+width:100%;
+margin: 0%;
+  }
+  #statusSelect > div{
+    cursor: pointer;
+background-color: rgb(71, 17, 0);
+width:calc(100% / 3);
+display: flex;
+align-items: center;
+justify-content: center;
+min-width: none;
+min-height: 0;
+color: rgb(255, 233, 173);
+text-align: center;
+
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 1000;
+  }
+  .selectedPlr{
+background-color: aliceblue !important;
+  }
+  .unselectedPlr{
+    opacity: 0.5;
+    
+  }
+  .disablePointer{
+    pointer-events: none;
+  }
+  
+  .actSelected{
+    background-color: rgb(255, 153, 0) !important;
+    pointer-events: none;
+  }
+  .opponent{
+    pointer-events: none;
+    background-color:rgb(255, 67, 67);
+  }
+  #goala,#goalb{
+height:53%;
+aspect-ratio: 59/159;
+background-color: rgb(80, 136, 91);
+position: absolute;
+
+  }
+  #goala::before,#goalb::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    
+    height: 94%;  /* 100% - 10% × 2 */
+    aspect-ratio: 1/3;
+    
+    
+    background: rgb(4, 29, 19);
+    
+    z-index: -1;
+  }
+  #goalb::before {
+    left: 0;
+    transform: translate(0%,-50%);
+  }
+  #goala::before {
+    right: 0;
+    transform: translate(0%,-50%);
+  }
+  #goala{
+    left:0;
+    top:50%;
+    transform: translate(-100%,-50%);
+  }
+  #goalb{
+    left:100%;
+    top:50%;
+    transform: translate(0%,-50%);
+  }
+  #stick{
+    pointer-events: none;
+  }
+  .scores{
+    width:20%;
+    height:6%;
+    position: absolute;
+    left:50%;
+    top:5%;
+    transform: translate(-50%,-50%);
+    background-color: black;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .scores > div{
+    
+    width:50%;
+    height:100%;
+    display: flex;
+    color: aliceblue;
+    
+  }
+  
+  .scores > .a{justify-content: end;}
+  .scores > div >h1,.scores > div > p{
+    height:100%;
+   font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    
+  }
+  #cover{
+    position: absolute;
+    left:0;
+    top:0;
+    margin:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 1);
+    opacity: 0;
+    transition: 0.2s;
+    pointer-events: none;
+  }
+  .ready{
+    z-index: 100;
+    opacity: 0.5 !important;
+    pointer-events: auto !important;
+  }
+  .predictStick{
+    opacity: 0.5 !important;
+    
+  }
+  .player > svg{
+    z-index: 0;
+  }
+  #timeline {
+    position: absolute;
+width:30%;
+height:2%;
+left:50%;
+bottom:7%;
+transform: translate(-50%,50%);
+z-index: 12;
+}
+
+  #timeline .bar {
+    position: absolute;
+width:100%;
+height:100%;
+left:0%;
+bottom:0%;
+
+background-color: rgba(0, 0, 0, 0.2);
+
+border-radius: 100%;
+overflow: hidden;
+z-index: 0;
+  }
+  #timeline .bar div{
+    position: absolute;
+width:100%;
+height:100%;
+left:0%;
+top:0;
+
+background-color: rgb(124, 150, 114);
+z-index: 12;
+  }
+  #timeline h1{
+   margin:0%;
+   padding:0%;
+   position: absolute;
+   top:50%;
+   left:50%;
+   transform: translate(-50%,-50%);
+height: 300%;
+z-index: 1;
+font-family: Arial, Helvetica, sans-serif;
+color: rgb(255, 255, 255);
+  }
+  #winnerPanel{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-image: linear-gradient(rgba(255, 0, 106, 0.5), rgba(255, 255, 0, 0.5));
+    z-index: 100;
+    -webkit-backdrop-filter: blur(0.5vh);
+    backdrop-filter: blur(0.5vh);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #winnerPanel .scores{
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(49, 36, 0, 0.25);
+    width:100%;
+    height: 10%;
+    
+  }
+  #winnerPanel button{
+    position: absolute;
+    left:50%;
+    top:70%;
+    transform: translate(-50%,-50%);
+    width:15%;
+    height:5%;
+    border: none;
+    outline: none;
+    background-color: antiquewhite;
+    cursor: pointer;
+  }
+  
