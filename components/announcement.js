@@ -1,6 +1,8 @@
-export function createAnnouncementUI({ title, message, type = 'info', duration = 3000 }) {
+var containernum=0
+ function createAnnouncementUI( title, message, type = 'info', duration = 3000 ) {
     const container = document.createElement('div');
     container.className = `announcement ${type}`;
+    container.id="announcement"+containernum
     container.style.cssText = `
       position: fixed;
       top: 20px;
@@ -13,7 +15,7 @@ export function createAnnouncementUI({ title, message, type = 'info', duration =
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       opacity: 0;
       transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      
       z-index: 9999;
       background-color: ${type === 'success' ? '#d4edda' :
                         type === 'error' ? '#f8d7da' :
@@ -41,18 +43,33 @@ export function createAnnouncementUI({ title, message, type = 'info', duration =
     document.body.appendChild(container);
   
     // Kích hoạt hiệu ứng xuất hiện
-    requestAnimationFrame(() => {
-      container.style.opacity = '1';
-      container.style.transform = 'translateY(0)';
+    gsap.to("#"+"announcement"+containernum, {
+      duration: 0.3,
+      opacity: 1,
+      y: 0,
+      ease: "power1.out",
+      onComplete: () => {
+       gsap.to("#"+"announcement"+containernum1, {
+        duration: duration/1000,onComplete: () =>
+        {
+          gsap.to("#"+"announcement"+containernum1, {
+          duration: 0.3,
+          opacity: 0,
+          y: '-10px',
+          ease: "power1.out",
+          onComplete: () => {container.remove()}
+        })
+       } })
+      
+    }
     });
-  
+   const containernum1=containernum
     // Tự động ẩn sau thời gian
-    setTimeout(() => {
-      container.style.opacity = '0';
-      container.style.transform = 'translateY(-10px)';
-      setTimeout(() => container.remove(), 300); // chờ hiệu ứng xong rồi xóa
-    }, duration);
-  
+    
+      
+       // chờ hiệu ứng xong rồi xóa
+    
+  containernum+=1
     return container;
   }
   

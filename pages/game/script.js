@@ -122,6 +122,14 @@ document.getElementById(player.id).position=player.position
       const w = currentRound==1 ? 29-Math.max((Date.now()-sentTime),0)/1000 : 19-Math.max((Date.now()-sentTime),0)/1000;
       if(side&&currentRound<=20){
         const ballPosX=crstatus.find(p => p.id === "ball"&&p.status=="move")
+        if(ballPosX&&(ballPosX.position.x>205||ballPosX.position.x<-5)){
+        setTimeout(()=>{
+document.getElementById('goal').style.visibility="visible";
+document.getElementById('goal').currentTime = 0;
+document.getElementById('goal').play();
+setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000);
+        },maxDuration*1000+500)
+      }
         const w1 = wT
         document.querySelector("#timeline h1").innerText=currentRound+"/20";
         setTimeout(()=>{
