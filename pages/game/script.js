@@ -23,14 +23,14 @@ function sendStatus(){
     socket.emit("ready");
   }, 0);
 }
-    const updateStatus=  (crstatus,side,sentTime,wT) => {
+    const updateStatus=  (crstatus,side,sentTime,wT,round) => {
       document.getElementById("field").removeEventListener("dblclick", posSelect);
       document.getElementById("stick").style.opacity="0";
       isAllTweenDone=false;
       document.querySelector("#cover").classList.remove('ready')
       document.querySelectorAll(".predictStatus").forEach((dv1)=>{dv1.remove()})
       document.querySelectorAll(".player").forEach((dv1)=>{dv1.classList.remove('actSelected')})
-      if(side){currentRound+=1;
+      if(round){currentRound=round;
         
       }
       Status=[]
@@ -152,7 +152,7 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
     },w1)
     }
     };
-    socket.on('updateStatus',(status,side,sentTime,w)=>updateStatus(status,side,sentTime,w))
+    socket.on('updateStatus',(status,side,sentTime,w,round)=>updateStatus(status,side,sentTime,w,round))
     socket.on('receiveMessage', ({ id, message }) => {
       console.log(111);
     });
