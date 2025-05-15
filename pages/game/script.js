@@ -177,7 +177,8 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
       createAnnouncementUI( "Game", msg,'warning' ,  3000 )
 document.getElementById('faults').innerText="Faults:"+faults+"/3"
     })
-    socket.on('scores', (scores,arr) => {
+    socket.on('scores', (scores,arr,faults) => {
+      if(faults)document.getElementById('faults').innerText="Faults:"+faults+"/3"
       console.log(scores)
       scores.forEach(item=>{
         console.log(scores)
