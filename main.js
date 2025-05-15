@@ -119,7 +119,12 @@ const socket = io("https://hypazzbackend.onrender.com");
     socket.on('errorMsg', (msg) => {
       createAnnouncementUI( "System", msg,'error' ,  3000 )
     });
-
+    socket.on('connect_error', async (err) => {
+      if(err!='You are already connected in another tab.')return
+      if (document.body.id!="webBody")await loadPage('./');
+      document.getElementById('connectError').style.visibility="visible";
+      console.log('Lỗi kết nối: ', err);
+    });
     function sendMsg() {
       const message = document.getElementById('msg').value;
       if (message && roomId) {
@@ -144,6 +149,7 @@ window._scripts[document.currentScript.src] = {
       fitTextToOwnHeight("#currentRoom",1,{});
       fitTextToOwnHeight("#roomjoin > input ",0.6,{});
       fitTextToOwnHeight("#roomjoin button",0.6,{});
+      fitTextToOwnHeight("#connectError",0.05,{});
       
     }}
     window._scripts[document.currentScript.src]?.start?.();

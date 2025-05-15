@@ -24,6 +24,8 @@ function sendStatus(){
   }, 0);
 }
     const updateStatus=  (crstatus,side,sentTime,wT) => {
+      document.getElementById("field").removeEventListener("dblclick", posSelect);
+      document.getElementById("stick").style.opacity="0";
       isAllTweenDone=false;
       document.querySelector("#cover").classList.remove('ready')
       document.querySelectorAll(".predictStatus").forEach((dv1)=>{dv1.remove()})
@@ -219,8 +221,10 @@ function updateStick(e){
   
   const stick = document.getElementById('stick');
   if(!stick)return;
-  if (checkCollision(document.getElementById(currentPlr),e,document.querySelectorAll(".player"))==true)stick.style.backgroundColor="red";
-  else stick.style.backgroundColor="black";
+  const c=checkCollision(document.getElementById(currentPlr),e,document.querySelectorAll(".player"))
+  if (c==true)stick.style.backgroundColor="red";
+  else if(c==false)stick.style.backgroundColor="black";
+  else if(c=="r")stick.style.backgroundColor="orange";
   const parentRect = document.getElementById("field").getBoundingClientRect();
   const dx = (e.clientX-parentRect.x) - (origin.x);
   const dy = (e.clientY-parentRect.y) - (origin.y);
@@ -277,6 +281,7 @@ function normalizeVector(v) {
           origin={x:plrRect.left-parentRect.left+plrRect.width/2,y:plrRect.top-parentRect.top+plrRect.height/2}
           if(mouseEvent)updateStick(mouseEvent)
           document.getElementById("stick").style.opacity="0.4";
+        
          posSelect=()=>{
           const e=mouseEvent
           document.getElementById("stick").style.opacity="0";
@@ -369,6 +374,7 @@ function checkCollision(origin, e, points){
         const d=distance(origin.position,document.getElementById("ball").position)
         const caPos={x:origin.position.x+unit.x * d,y:origin.position.y+unit.y * d};
         //console.log(points)
+        if(distance(origin.position,mouse)<20&&(currentStatusType=="P"||currentStatusType=="S"))return "r";
   for (const p of points) {
     //console.log(origin.position, mouse, p.position)
     //console.log(pointToLineDistance(origin.position, mouse, p.position))
@@ -378,6 +384,7 @@ function checkCollision(origin, e, points){
     }
     
 }
+
 if (pointToLineDistance(origin.position, mouse, document.getElementById("ball").position) < 10&&(currentStatusType!="P"&&currentStatusType!="S")) {
   return true;}
 return false;

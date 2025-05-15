@@ -133,7 +133,9 @@ body > .b{
     
 }
 #ball,.predictBall{
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width:5%;
     aspect-ratio: 1/1;
     background-color:rgb(255, 255, 255) !important;
@@ -145,7 +147,20 @@ body > .b{
     top:50%;
     transform: translate(-50%,-50%);
     border-radius: 100%;
-    z-index: 3;
+    z-index: 1;
+    pointer-events: auto !important;
+    
+}
+#ball svg{
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+.predictBall svg{
+  
+  opacity: 0;
+}
+#ball:hover svg{
+  opacity: 0.2;
 }
 #ball::before,.predictBall::before {
     content: "";
@@ -207,6 +222,7 @@ background-color: aliceblue !important;
   
   .actSelected{
     background-color: rgb(255, 153, 0) !important;
+    opacity: 1 !important;
     pointer-events: none;
   }
   .opponent{

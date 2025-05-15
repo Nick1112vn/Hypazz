@@ -109,4 +109,18 @@ color: rgb(113, 155, 255);
         mix-blend-mode: screen;
         pointer-events: none;
     }
+   #connectError{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+   }
    
