@@ -26,6 +26,8 @@ function sendStatus(){
     const updateStatus=  (crstatus,side,sentTime,wT,round) => {
       document.getElementById("field").removeEventListener("dblclick", posSelect);
       document.getElementById("stick").style.opacity="0";
+      document.querySelectorAll(".player").forEach((dv1)=>{dv1.classList.remove('disablePointer')})
+          document.querySelectorAll(".player").forEach((dv)=>{dv.classList.remove('selectedPlr');dv.classList.remove('unselectedPlr')})
       isAllTweenDone=false;
       document.querySelector("#cover").classList.remove('ready')
       document.querySelectorAll(".predictStatus").forEach((dv1)=>{dv1.remove()})
