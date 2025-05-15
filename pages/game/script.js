@@ -173,6 +173,10 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
       });
       
     })
+    socket.on('gameFault', (msg,faults) => {
+      createAnnouncementUI( "Game", msg,'warning' ,  3000 )
+document.getElementById('faults').innerText="Faults:"+faults+"/3"
+    })
     socket.on('scores', (scores,arr) => {
       console.log(scores)
       scores.forEach(item=>{
@@ -263,7 +267,7 @@ function normalizeVector(v) {
       fitTextToOwnHeight("#scores > .b > p",0.8,{left:20/100});
       fitTextToOwnHeight("#scores > .a > h1",0.8,{right:20/100});
       fitTextToOwnHeight("#scores > .b > h1",0.8,{left:20/100});
-
+      fitTextToOwnHeight("#faults",1,{});
       fitTextToOwnHeight("#winnerPanel .scores > .a > p",0.8,{right:20/100});
       fitTextToOwnHeight("#winnerPanel .scores  > .b > p",0.8,{left:20/100});
       fitTextToOwnHeight("#winnerPanel .scores  > .a > h1",0.8,{right:20/100});

@@ -123,4 +123,16 @@ color: rgb(113, 155, 255);
     justify-content: center;
     display: flex;
    }
+   #faults{
+    position: absolute;
+    width:auto;
+    height:5%;
+    left:2%;
+    top:4%;
+    padding: 0%;
+    margin: 0%;
+    z-index: 2;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 162, 0);
+   }
    
