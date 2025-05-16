@@ -24,6 +24,7 @@ function sendStatus(){
   }, 0);
 }
     const updateStatus=  (crstatus,side,sentTime,wT,round,faults,scores) => {
+      
       scores.forEach(item=>{
         console.log(scores)
         if (item.name)document.getElementById("scores").getElementsByClassName(item.side)[0].querySelector("h1").innerText=item.name;
@@ -162,6 +163,9 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
       });
     },w1)
     }
+    requestAnimationFrame(() => {
+      document.getElementById("blackscreen").style.display="none";
+      })
     };
     socket.on('updateStatus',(status,side,sentTime,w,round,faults,scores)=>updateStatus(status,side,sentTime,w,round,faults,scores))
     socket.on('receiveMessage', ({ id, message }) => {
@@ -271,6 +275,7 @@ function normalizeVector(v) {
 }
   window._scripts[document.currentScript.src] = {
     start: function() {
+      
       document.getElementById("ball").tl=gsap.timeline();
       $(".text").fitText(0.2);
       fitTextToOwnHeight("#scores > .a > p",0.8,{right:20/100});
