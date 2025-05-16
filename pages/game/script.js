@@ -23,7 +23,16 @@ function sendStatus(){
     socket.emit("ready");
   }, 0);
 }
-    const updateStatus=  (crstatus,side,sentTime,wT,round) => {
+    const updateStatus=  (crstatus,side,sentTime,wT,round,faults,scores) => {
+      scores.forEach(item=>{
+        console.log(scores)
+        if (item.name)document.getElementById("scores").getElementsByClassName(item.side)[0].querySelector("h1").innerText=item.name;
+        document.getElementById("scores").getElementsByClassName(item.side)[0].querySelector("p").innerText=item.score;
+
+        if (item.name)document.querySelector(`#winnerPanel .scores .${item.side} h1`).innerText=item.name;
+        document.querySelector(`#winnerPanel .scores .${item.side} p`).innerText=item.score;
+      })
+      if(faults)document.getElementById('faults').innerText="Faults:"+faults+"/3"
       document.getElementById("field").removeEventListener("dblclick", posSelect);
       document.getElementById("stick").style.opacity="0";
       document.querySelectorAll(".player").forEach((dv1)=>{dv1.classList.remove('disablePointer')})
@@ -154,7 +163,7 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
     },w1)
     }
     };
-    socket.on('updateStatus',(status,side,sentTime,w,round)=>updateStatus(status,side,sentTime,w,round))
+    socket.on('updateStatus',(status,side,sentTime,w,round,faults,scores)=>updateStatus(status,side,sentTime,w,round,faults,scores))
     socket.on('receiveMessage', ({ id, message }) => {
       console.log(111);
     });
