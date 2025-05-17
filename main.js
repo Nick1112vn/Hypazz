@@ -56,7 +56,8 @@ const socket = io("https://hypazzbackend.onrender.com");
        document.getElementById('currentRoom').style.visibility="visible"
         document.getElementById('info').style.visibility="hidden"
     });
-    async function  loadPage(page) {
+    async function loadPage(page) {
+      gsap.killTweensOf("*");
   await fetch(page+"/index.html")
     .then(res => res.text())
     .then(html => {
@@ -153,3 +154,20 @@ window._scripts[document.currentScript.src] = {
       
     }}
     window._scripts[document.currentScript.src]?.start?.();
+    function updateScale() {
+      
+      const ratio = window.innerWidth / window.innerHeight;
+    
+      if (ratio >= 2) {
+        // Ảnh đủ rộng, không scale
+        document.body.style.transform = `translate(-50%,-50%) scale(${window.innerHeight/1000})`;
+      } else {
+        document.body.style.transform = `translate(-50%,-50%) scale(${window.innerWidth/2000})`;
+      }
+    }
+    
+    // Khi ảnh load xong
+    
+      updateScale();
+      window.addEventListener("resize", updateScale);
+    

@@ -11,8 +11,8 @@ body{
    left:50%;
    top:50%;
    transform: translate(-50%,-50%);
-   width:100%;
-   height:100%;
+   width:2000px;
+   height:1000px;
    
    background-repeat: no-repeat; /* Prevents the background from repeating */
    background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
@@ -116,8 +116,8 @@ background: rgb(255, 255, 255);
     font-size: 18px;
   }
 body > .b > div {
-    width:200vh;
-    aspect-ratio: 2/0.9;
+    width:100%;
+    height:90%;
     position: relative;
 }
 body > .b{
@@ -129,7 +129,7 @@ body > .b{
     height:100%;
     left:0;
     top:0;
-    
+    background-color: rgb(4, 29, 19);
     
 }
 #ball,.predictBall{

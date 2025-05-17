@@ -172,9 +172,11 @@ setTimeout(()=>{document.getElementById('goal').style.visibility="hidden";},4000
       console.log(111);
     });
     
-    socket.on('roomClosed', () => {
+    socket.on('roomClosed', async () => {
       console.log("roomClosed")
-      loadPage('./');
+      
+      await loadPage('./');
+      createAnnouncementUI( "System", "You are leaved the room.",'error' ,  3000 )
     });
     socket.on("winner",()=>{
       document.getElementById("winnerPanel").style.pointerEvents="auto";

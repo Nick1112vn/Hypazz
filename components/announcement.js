@@ -1,5 +1,6 @@
 var containernum=0
  function createAnnouncementUI( title, message, type = 'info', duration = 3000 ) {
+  
     const container = document.createElement('div');
     container.className = `announcement ${type}`;
     container.id="announcement"+containernum
@@ -8,7 +9,7 @@ var containernum=0
       top: 20px;
       right: 20px;
       max-width: 300px;
-      padding: 12px 16px;
+      padding: 14px 18px;
       margin: 10px;
       border-radius: 8px;
       font-family: sans-serif;
@@ -33,11 +34,13 @@ var containernum=0
       titleElem.textContent = title;
       titleElem.style.display = 'block';
       titleElem.style.marginBottom = '4px';
+      titleElem.style.fontSize="32px"
       container.appendChild(titleElem);
     }
   
     const messageElem = document.createElement('span');
     messageElem.textContent = message;
+    messageElem.style.fontSize="30px"
     container.appendChild(messageElem);
   
     document.body.appendChild(container);
